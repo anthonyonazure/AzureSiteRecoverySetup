@@ -24,9 +24,6 @@ if (!(Test-Path $Directory -PathType Container))
 	New-Item -ItemType Directory -Force -Path $Directory
 }
 
-# Install latest module version today that is v.4.2.1
-Install-Module AzureRM.SiteRecovery -force
-
 Login-AzureRmAccount -Credential (get-credential -Credential username@email.com)
 
 # New Resource Group
