@@ -89,7 +89,9 @@ $RecoveryPoints = 1
 
 # Create Site Recovery and Replication Policy 
 $SiteRecoveryPolicy = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationFrequencyInSeconds $ReplicationFreq -RecoveryPoints $RecoveryPoints -ReplicationProvider HyperVReplicaAzure -ApplicationConsistentSnapshotFrequencyInHours 1
-<# Recovery Protection Center
+
+<# Recovery Protection Center will not be available until after a Hyper-V server from on-premise. Because the on-premise may not be ready I am going to leave it for the future
+
 # Get the Protection Container
 $ProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
 
