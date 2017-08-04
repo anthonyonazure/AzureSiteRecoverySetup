@@ -19,20 +19,21 @@ $RgName = "asr-tst-002"
 $StorAcctName = "asrstor002"
 $Directory = "C:\Temp\"
 
+# Test path of the var $Directory and create it if its missing
 if (!(Test-Path $Directory -PathType Container))
 {
 	New-Item -ItemType Directory -Force -Path $Directory
 }
+# Change the credentials to match your work/school email
+Login-AzureRmAccount -Credential (get-credential -Credential anthony@configmgr.com)
 
-Login-AzureRmAccount -Credential (get-credential -Credential username@email.com)
-
-# New Resource Group
+# Create New Resource Group
 $AsrRG = New-AzureRmResourceGroup -Name $RgName -Location $Location
 
-# New Storage account
+# Create New Storage account
 $AsrStor = New-AzureRmStorageAccount -ResourceGroupName $RgName -Name $StorAcctName -Location $Location -SkuName Standard_LRS
 
-# Create Recovery Vnet and subnet 
+# Create Recovery Vnet and Subnet 
 $RecoverySubnet = New-AzureRmVirtualNetworkSubnetConfig -Name RecoverySubnet -AddressPrefix "172.16.1.0/24"
 $RecoveryVnet = New-AzureRmVirtualNetwork -ResourceGroupName $RgName -Name 'RecoveryVnet' -AddressPrefix '172.16.0.0/21' -Location $Location -Subnet $RecoverySubnet
 
@@ -81,7 +82,7 @@ Add-Content c:\Temp\MySQLCredentialsfile.txt "`nMySQLRootPassword = `"Password`"
 # Download and install the agent on the Hyper-V host(s) from this URL: https://aka.ms/downloaddra
 #>
 
-# Enable replication for vault
+# Enable Replication for Vault
 $ReplicationFreq = "300"
 $PolicyName = $RgName
 $RecoveryPoints = 1
