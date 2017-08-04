@@ -89,7 +89,7 @@ $RecoveryPoints = 1
 
 # Create Site Recovery and Replication Policy 
 $SiteRecoveryPolicy = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationFrequencyInSeconds $ReplicationFreq -RecoveryPoints $RecoveryPoints -ReplicationProvider HyperVReplicaAzure -ApplicationConsistentSnapshotFrequencyInHours 1
-
+<# Recovery Protection Center
 # Get the Protection Container
 $ProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
 
@@ -97,3 +97,4 @@ $Policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $PolicyName
 
 # Create the Container Mapping
 $ContainerMapping = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $RgName -Policy $Policy -PrimaryProtectionContainer $ProtectionContainer
+#>
